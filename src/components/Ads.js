@@ -4,26 +4,40 @@ import axios from 'axios';
 class Ads extends Component {
     constructor(){
         super();
-        this.state={data:""}
+        this.state={data:"",
+      service_id:null,
+    timer:null}
     }
 
     componentDidMount(){
         this.fetchAd();
+        
+    }
+    componentWillUnmount(){
+       {if (this.state.timer !== null)clearTimeout(this.state.timer);}
+      
     }
     fetchAd= async()=>{
       const ip = (await axios.get('https://api.ipify.org?format=json')).data.ip;
       axios.post('http://localhost:8000/ad',{domain_id:1,page_name:this.props.page_name,user:localStorage.getItem('email'),ip_address:ip})
         .then((res)=>{
-            this.setState({data:`http://localhost:8000/ads/${res.data}`})
+            console.log(res);
+            this.setState({data:`http://localhost:8000/ads/${res.data.file_name}`,service_id:res.data.service_id})
+
         })
-        setTimeout(this.fetchAd,20*1000)
+        this.setState({timer:setTimeout(this.fetchAd,20*1000)})
+    }
+    onClick=()=>{
+      if (this.state.service_id !==null){
+      axios.post('http://localhost:8000/click',{service_id:this.state.service_id})
+    }
     }
 
   render() {
       const {data} =this.state
     return (
       <div>
-        <img src={data} width="200" height="200"/>
+        <img src={data} width="200" height="200" onClick={this.onClick}/>
        
       </div>
     );
