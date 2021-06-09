@@ -20,6 +20,7 @@ export default class App extends React.Component {
   setAppState=(email,password)=>{
     localStorage.setItem('email',  email);
     localStorage.setItem('password', password);
+    
   }
    render(){
     

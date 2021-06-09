@@ -17,6 +17,8 @@ componentDidMount() {
       .then(res=>{
          console.log(res.data); 
        this.setState({form:res.data})
+       localStorage.setItem('age', res.data.age);
+       localStorage.setItem('city', res.data.city);
     })
   }
   render() {
