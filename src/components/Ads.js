@@ -10,8 +10,9 @@ class Ads extends Component {
     componentDidMount(){
         this.fetchAd();
     }
-    fetchAd=()=>{
-      axios.post('http://localhost:8000/ad',{})
+    fetchAd= async()=>{
+      const ip = (await axios.get('https://api.ipify.org?format=json')).data.ip;
+      axios.post('http://localhost:8000/ad',{domain_id:1,page_name:this.props.page_name,user:localStorage.getItem('email'),ip_address:ip})
         .then((res)=>{
             this.setState({data:`http://localhost:8000/ads/${res.data}`})
         })

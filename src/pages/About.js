@@ -12,7 +12,7 @@ class About extends Component {
           <h2>About</h2>
           <p>About page</p>
         </div>
-        <Ads page_name="About"/>
+        <Ads page_name="about"/>
       </div>
     );
   }

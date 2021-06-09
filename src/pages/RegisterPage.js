@@ -50,8 +50,7 @@ Register=()=>{
             CITY
             <select
               name="city"
-              value={values.Department}
-              onChange={handleChange("city")}
+              onChange={this.onChangehandle("city")}
             >
               <option name="city" value="chennai">
                 chennai

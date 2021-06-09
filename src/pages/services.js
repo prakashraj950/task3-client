@@ -13,7 +13,7 @@ class Services extends Component {
           <p>This is Service page</p>
 
           </div>
-        <Ads Page_name="Services"/>
+        <Ads Page_name="services"/>
       </div>
     );
   }

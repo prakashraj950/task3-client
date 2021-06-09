@@ -13,7 +13,7 @@ class About extends Component {
           <p>This is contact page</p>
 
           </div>
-        <Ads page_name="Contact"/>
+        <Ads page_name="contact"/>
       </div>
     );
   }
