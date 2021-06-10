@@ -17,8 +17,23 @@ class Ads extends Component {
        {if (this.state.timer !== null)clearTimeout(this.state.timer);}
       
     }
+    age_group=(age)=>{
+      if (age <= 18){
+        return 1;
+      }
+      else if (age <=25){
+        return 2;
+      }
+      else if (age <=40){
+        return 3;
+      }
+      else{
+        return null;
+      }
+    }
+
     fetchAd= async()=>{
-      const age_group = localStorage.getItem('age');
+      const age_group = this.age_group(localStorage.getItem('age'));
       const city = localStorage.getItem('city');
       const user = localStorage.getItem('email')
       const ip = (await axios.get('https://api.ipify.org?format=json')).data.ip;
